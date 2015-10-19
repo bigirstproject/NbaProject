@@ -2,7 +2,7 @@ package com.kugou.framework.component.preference;
 
 import android.content.Context;
 
-import com.kugou.framework.component.base.PicProjectApplication;
+import com.kugou.framework.component.base.NbaProjectApplication;
 
 public class AppCommonPref extends PreferenceOpenHelper {
 
@@ -16,7 +16,7 @@ public class AppCommonPref extends PreferenceOpenHelper {
 		if (mInstance == null) {
 			synchronized (AppCommonPref.class) {
 				if (mInstance == null) {
-					Context context = PicProjectApplication.getInstance();
+					Context context = NbaProjectApplication.getInstance();
 					String name = context.getPackageName() + "appinfo";
 					mInstance = new AppCommonPref(context, name);
 				}

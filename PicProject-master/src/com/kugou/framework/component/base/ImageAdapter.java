@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
-import com.sunsun.picproject.Image.SwitchImageLoader;
+import com.sunsun.nbapic.Image.SwitchImageLoader;
 
 public abstract class ImageAdapter<E> extends BaseAdapter {
 

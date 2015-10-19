@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:pic="http://schemas.android.com/apk/res/com.sunsun.picproject"
+    xmlns:pic="http://schemas.android.com/apk/res/com.sunsun.nbaproject"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:gravity="center"
     android:orientation="horizontal" >
 
-    <com.sunsun.picproject.view.AutoAdjustImageView
+    <com.sunsun.nbapic.view.AutoAdjustImageView
         android:id="@+id/gallery_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gallery_right_small"
         android:layout_marginLeft="@dimen/gallery_left"
         android:layout_marginRight="@dimen/gallery_right_small"
+        android:layout_marginStart="@dimen/gallery_left"
         android:layout_weight="1"
         android:background="@drawable/ic_launcher"
         android:scaleType="fitXY"
@@ -20,12 +22,14 @@
         pic:adjustType="auto_adjust_scale_height"
         pic:scaleRate="0.75" />
 
-    <com.sunsun.picproject.view.AutoAdjustImageView
+    <com.sunsun.nbapic.view.AutoAdjustImageView
         android:id="@+id/gallery_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/gallery_right"
         android:layout_marginLeft="@dimen/gallery_left_small"
         android:layout_marginRight="@dimen/gallery_right"
+        android:layout_marginStart="@dimen/gallery_left_small"
         android:layout_weight="1"
         android:background="@drawable/ic_launcher"
         android:scaleType="fitXY"
