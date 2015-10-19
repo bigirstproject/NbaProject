@@ -70,10 +70,16 @@
 # view AndroidManifest.xml #generated:24
 -keep class com.kugou.framework.component.base.NbaProjectApplication { <init>(...); }
 
+# view res/layout/main_layout.xml #generated:11
+-keep class com.kugou.framework.component.base.ScrollableViewPager { <init>(...); }
+
 # view AndroidManifest.xml #generated:30
 -keep class com.sunsun.nbapic.activity.MainActivity { <init>(...); }
 
 # view res/layout/gallery_two_layout.xml #generated:10
 # view res/layout/gallery_two_layout.xml #generated:25
 -keep class com.sunsun.nbapic.view.AutoAdjustImageView { <init>(...); }
+
+# view res/layout/main_layout.xml #generated:6
+-keep class com.sunsun.nbapic.view.TitleBarView { <init>(...); }
 

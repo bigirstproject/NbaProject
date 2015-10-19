@@ -7,5 +7,9 @@
     <string name="subscribe">订阅</string>
     <!-- 首页 -->
     <string name="recommend">精选推荐</string>
+    <string name="channel">channel</string>
+    <string name="news">news</string>
+    <string name="gallery">gallery</string>
+    <string name="video">video</string>
 
 </resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.sunsun.nbapic.view.TitleBarView
+        android:id="@+id/title_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.kugou.framework.component.base.ScrollableViewPager
+        android:id="@+id/customviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_main_tab"
+        android:layout_below="@+id/title_bar_view"
+        android:persistentDrawingCache="animation" >
+    </com.kugou.framework.component.base.ScrollableViewPager>
+
+    <LinearLayout
+        android:id="@+id/ll_main_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/main_bar_selected_bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/tab_channel"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_selector"
+                android:contentDescription="@null"
+                android:drawableTop="@drawable/tab_channel_selector"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/channel"
+                android:textColor="@color/tab_text_selector"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/tab_news"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_selector"
+                android:contentDescription="@null"
+                android:drawableTop="@drawable/tab_news_selector"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/news"
+                android:textColor="@color/tab_text_selector"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/tab_gallery"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_selector"
+                android:contentDescription="@null"
+                android:drawableTop="@drawable/tab_gallery_selector"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/gallery"
+                android:textColor="@color/tab_text_selector"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/tab_video"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/tab_selector"
+                android:contentDescription="@null"
+                android:drawableTop="@drawable/tab_video_selector"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/video"
+                android:textColor="@color/tab_text_selector"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
