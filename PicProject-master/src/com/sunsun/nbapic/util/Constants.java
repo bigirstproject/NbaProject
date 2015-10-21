@@ -2,7 +2,7 @@ package com.sunsun.nbapic.util;
 
 public class Constants {
 
-	public static final String BASE_URL = "http://m.4493.com/";
+	public static final String BASE_URL = "http://m.china.nba.com/photos/";
 	
 	public static final String URL_END = "&pagenum=16&pagesize=16";
 	

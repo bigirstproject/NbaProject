@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import com.kugou.framework.component.base.BaseWorkerFragmentActivity;
 import com.kugou.framework.component.base.ScrollableViewPager;
 import com.kugou.framework.component.base.ViewPagerAdapter;
-import com.sunsun.nbapic.Frament.ChannelFragment;
+import com.sunsun.nbapic.Frament.ChinaMainPhotosFragment;
 import com.sunsun.nbapic.Frament.GalleryFragment;
 import com.sunsun.nbapic.Frament.NewsFragment;
 import com.sunsun.nbapic.Frament.VideoFragment;
@@ -81,7 +81,7 @@ public class MainActivity extends BaseWorkerFragmentActivity implements
 
 	protected ArrayList<Fragment> initFragments() {
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
-		Fragment mChannelFragment = ChannelFragment.newInstance();
+		Fragment mChannelFragment = ChinaMainPhotosFragment.newInstance();
 		Fragment mNewsFragment = NewsFragment.newInstance();
 		Fragment mGalleryFragment = GalleryFragment.newInstance();
 		Fragment mVideoFragment = VideoFragment.newInstance();

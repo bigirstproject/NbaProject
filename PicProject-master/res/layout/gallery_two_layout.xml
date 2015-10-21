@@ -18,7 +18,7 @@
         android:layout_weight="1"
         android:background="@drawable/ic_launcher"
         android:scaleType="fitXY"
-        android:src="@drawable/test_pic"
+        android:src="@drawable/ic_launcher"
         pic:adjustType="auto_adjust_scale_height"
         pic:scaleRate="0.75" />
 
@@ -33,7 +33,7 @@
         android:layout_weight="1"
         android:background="@drawable/ic_launcher"
         android:scaleType="fitXY"
-        android:src="@drawable/test_pic"
+        android:src="@drawable/ic_launcher"
         pic:adjustType="auto_adjust_scale_height"
         pic:scaleRate="0.75" />
 

@@ -6,6 +6,8 @@
     <color name="blue">#009</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+    <color name="gray">#e0e0e0</color>
+
     <!-- common -->
     <color name="transparent">#00000000</color>
     <color name="main_bar_selected_bg">#E8E8E8</color>
