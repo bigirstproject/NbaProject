@@ -34,8 +34,8 @@ public class TabStripView extends FrameLayout implements OnClickListener {
 	private LinearLayout linearLayout;
 	private ImageView imageView;
 	private List<TextView> textViews = new ArrayList<TextView>();
-	private String[] tabs = { getResources().getString(R.string.recommend),  // tab
-			getResources().getString(R.string.subscribe) };
+	private String[] tabs = { getResources().getString(R.string.channel),  // tab
+			getResources().getString(R.string.news) };
 	private int tabStripViewColor = getResources().getColor(R.color.white);
 	private int[] tabTextColors = {
 			getResources().getColor(R.color.tab_text_selected_color),

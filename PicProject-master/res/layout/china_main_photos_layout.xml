@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pic="http://schemas.android.com/apk/res/com.sunsun.nbaproject"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/gallery_right_small"
+    android:layout_marginLeft="@dimen/gallery_left"
+    android:layout_marginRight="@dimen/gallery_right_small"
+    android:layout_marginStart="@dimen/gallery_left"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <com.sunsun.nbapic.view.AutoAdjustImageView
+        android:id="@+id/imageview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gap_line_bg"
+        android:padding="1dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher"
+        pic:adjustType="auto_adjust_scale_height"
+        pic:scaleRate="5.063" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="特辑-国王球衣变迁史 看看哪款才是你的菜"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:text="2015-10-21 12:07"
+        android:textColor="#ecdbd1"
+        android:textSize="10sp" />
+
+</LinearLayout>

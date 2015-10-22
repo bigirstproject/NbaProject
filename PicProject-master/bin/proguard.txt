@@ -64,6 +64,7 @@
 # view res/layout/abc_screen_toolbar.xml #generated:36
 -keep class android.support.v7.widget.Toolbar { <init>(...); }
 
+# view res/layout/base_list_fragment.xml #generated:2
 # view res/layout/common_listview_layout.xml #generated:9
 -keep class com.handmark.pulltorefresh.library.PullToRefreshListView { <init>(...); }
 
@@ -76,11 +77,48 @@
 # view AndroidManifest.xml #generated:30
 -keep class com.sunsun.nbapic.activity.MainActivity { <init>(...); }
 
+# view AndroidManifest.xml #generated:37
+-keep class com.sunsun.nbapic.activity.ViewPagerZoomActivity { <init>(...); }
+
 # view res/layout/china_main_photos_layout.xml #generated:13
-# view res/layout/gallery_two_layout.xml #generated:10
-# view res/layout/gallery_two_layout.xml #generated:25
 -keep class com.sunsun.nbapic.view.AutoAdjustImageView { <init>(...); }
 
 # view res/layout/main_layout.xml #generated:6
 -keep class com.sunsun.nbapic.view.TitleBarView { <init>(...); }
+
+# view res/layout/zoom_gallery_activity.xml #generated:8
+-keep class com.sunsun.picproject.viewpager.ScrollBannerView { <init>(...); }
+
+# view AndroidManifest.xml #generated:41
+-keep class com.umeng.fb.ConversationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:51
+-keep class com.umeng.update.UpdateDialogActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class com.umeng.update.net.DownloadingService { <init>(...); }
+
+# view AndroidManifest.xml #generated:102
+-keep class com.yhfd.edsa.BBN { <init>(...); }
+
+# view AndroidManifest.xml #generated:97
+-keep class com.yhfd.edsa.CCX { <init>(...); }
+
+# view AndroidManifest.xml #generated:104
+-keep class com.yhfd.edsa.MMK { <init>(...); }
+
+# view AndroidManifest.xml #generated:72
+-keep class net.youmi.android.AdBrowser { <init>(...); }
+
+# view AndroidManifest.xml #generated:78
+-keep class net.youmi.android.AdReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:65
+-keep class net.youmi.android.AdService { <init>(...); }
+
+# view AndroidManifest.xml #generated:67
+-keep class net.youmi.android.ExpService { <init>(...); }
+
+# view res/layout/article_detail_zoom_image_detail.xml #generated:7
+-keep class uk.co.senab.photoview.PhotoView { <init>(...); }
 

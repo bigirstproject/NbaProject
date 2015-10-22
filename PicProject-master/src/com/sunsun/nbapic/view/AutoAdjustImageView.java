@@ -68,7 +68,7 @@ public class AutoAdjustImageView extends ImageView {
 		mHelper.setRelativeHeight(custHeight);
 		mHelper.setRelativeWidth(custWidth);
 
-		mHelper.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		mHelper.onMeasureView(widthMeasureSpec, heightMeasureSpec);
 		super.onMeasure(mHelper.getWidthSpec(), mHelper.getHeightSpec());
 	}
 }

@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/common_text_five"
         android:layout_marginLeft="@dimen/gallery_left"
-        android:text="@string/recommend" />
+         />
 
 </LinearLayout>
