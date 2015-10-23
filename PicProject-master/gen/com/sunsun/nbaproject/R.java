@@ -2329,7 +2329,7 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f090037;
         public static final int alertTitle=0x7f090041;
         public static final int always=0x7f09001e;
-        public static final int back_img=0x7f090080;
+        public static final int back=0x7f090080;
         public static final int beginning=0x7f090025;
         public static final int both=0x7f090028;
         public static final int btn_reload=0x7f09006d;
@@ -2381,8 +2381,7 @@ containing a value of this type.
         public static final int never=0x7f090021;
         public static final int none=0x7f090014;
         public static final int normal=0x7f090010;
-        public static final int page_number=0x7f090082;
-        public static final int page_title=0x7f090081;
+        public static final int page_number=0x7f090081;
         public static final int pager=0x7f09007e;
         public static final int parentPanel=0x7f09003e;
         public static final int progress_bar=0x7f090060;
@@ -2425,6 +2424,7 @@ containing a value of this type.
         public static final int src_atop=0x7f09001b;
         public static final int src_in=0x7f09001c;
         public static final int src_over=0x7f09001d;
+        public static final int sub_title=0x7f090082;
         public static final int submit_area=0x7f09005c;
         public static final int tabMode=0x7f090011;
         public static final int tab_channel=0x7f090072;
@@ -2441,7 +2441,6 @@ containing a value of this type.
         public static final int top_bar=0x7f09007f;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090018;
-        public static final int wallpager=0x7f090083;
         public static final int webview=0x7f09000a;
         public static final int withText=0x7f090022;
         public static final int wrap_content=0x7f09000e;

@@ -75,7 +75,6 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 	private String url;
 	private List<PicAddress> mDatasource;
 	private int mSelectPos;
-	private String mTitle;
 
 	private boolean isAnimating;
 	private boolean mAllBarVisible = true;
@@ -107,8 +106,8 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 		mBottomBar = (LinearLayout) view.findViewById(R.id.top_bar);
 		mBackImageView = (ImageButton) view.findViewById(R.id.back);
 		mTitleTextView = (TextView) view.findViewById(R.id.title);
-		mPageSize = (TextView) view.findViewById(R.id.page_number);
 		mSubTitle = (TextView) view.findViewById(R.id.sub_title);
+		mPageSize = (TextView) view.findViewById(R.id.page_number);
 		mBackImageView.setOnClickListener(this);
 		mGalleryAdapter = new GalleryAdapter(getActivity());
 		mGalleryAdapter.setOnViewTapListener(listener);
@@ -311,7 +310,7 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 				List<PicAddress> listData = new ArrayList<PicAddress>();
 
 				Elements elementsTitle = body.getElementsByClass("title");
-				mTitle = elementsTitle.get(elementsTitle.size() - 1).text()
+				String title = elementsTitle.get(elementsTitle.size() - 1).text()
 						.trim();
 
 				Elements elements = body.getElementsByClass("content");
@@ -328,11 +327,11 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 					if (!TextUtils.isEmpty(imageUrl)) {
 						item.setImageUrl(imageUrl);
 					}
-					if (!TextUtils.isEmpty(mTitle)) {
-						item.setTitle(mTitle);
-					}
 					if (!TextUtils.isEmpty(subTitle)) {
 						item.setSubTitle(subTitle);
+					}
+					if (!TextUtils.isEmpty(title)) {
+						item.setTitle(title);
 					}
 					listData.add(item);
 				}
