@@ -1,6 +1,5 @@
 package com.sunsun.nbapic.Frament;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +9,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,13 +25,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kugou.framework.component.base.BaseEmptyFragment;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sunsun.nbapic.adapter.GalleryAdapter;
 import com.sunsun.nbapic.bean.ZoomPhotosTable.PicAddress;
 import com.sunsun.nbapic.http.SimpleHttp;
@@ -71,17 +66,16 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 	private LinearLayout mBottomBar;
 	private TextView mTitleTextView;
 	private TextView mPageSize;
+	private TextView mSubTitle;
 	private ImageButton mBackImageView;
-	private Button mWallpager;
 
 	private Animation mAnimRadioUpToDownIn;
 	private Animation mAnimRadioUpToDownOut;
 
-	private List<PicAddress> mDatasource;
 	private String url;
-	private String mContent;
+	private List<PicAddress> mDatasource;
 	private int mSelectPos;
-	private int mTotalSize;
+	private String mTitle;
 
 	private boolean isAnimating;
 	private boolean mAllBarVisible = true;
@@ -108,15 +102,14 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 		super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.zoom_gallery_activity, container,
 				false);
-		mBottomBar = (LinearLayout) view.findViewById(R.id.top_bar);
 		mBanner = (ScrollBannerView) view.findViewById(R.id.pager);
-		mWallpager = (Button) view.findViewById(R.id.wallpager);
 		setContainer(mBanner);
-		mTitleTextView = (TextView) view.findViewById(R.id.page_title);
+		mBottomBar = (LinearLayout) view.findViewById(R.id.top_bar);
+		mBackImageView = (ImageButton) view.findViewById(R.id.back);
+		mTitleTextView = (TextView) view.findViewById(R.id.title);
 		mPageSize = (TextView) view.findViewById(R.id.page_number);
-		mBackImageView = (ImageButton) view.findViewById(R.id.back_img);
+		mSubTitle = (TextView) view.findViewById(R.id.sub_title);
 		mBackImageView.setOnClickListener(this);
-		mWallpager.setOnClickListener(this);
 		mGalleryAdapter = new GalleryAdapter(getActivity());
 		mGalleryAdapter.setOnViewTapListener(listener);
 		mBanner.setListAdapter(mGalleryAdapter);
@@ -134,28 +127,8 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.back_img:
+		case R.id.back:
 			getActivity().onBackPressed();
-			break;
-		case R.id.wallpager:
-			File file = ImageLoader
-					.getInstance()
-					.getDiscCache()
-					.get(mGalleryAdapter.getDataSource().get(mSelectPos)
-							.getUrl());
-			if (file != null) {
-				Bitmap decodeFile = BitmapFactory.decodeFile(file
-						.getAbsolutePath());
-				if (decodeFile != null) {
-					/*
-					 * Utils.setWallpaper(getActivity(), decodeFile);
-					 * DWToast.makeText( getActivity(),
-					 * getActivity().getResources().getString(
-					 * R.string.set_wallerpager_sucess),
-					 * Toast.LENGTH_SHORT).show();
-					 */
-				}
-			}
 			break;
 		default:
 			break;
@@ -304,21 +277,14 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 		spanText.setSpan(new ForegroundColorSpan(Color.WHITE), 0, index,
 				Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 		mPageSize.setText(spanText);
-		if (!TextUtils.isEmpty(mContent)) {
-			int length = mContent.length();
-			int indexOf = mContent.indexOf(String.valueOf(mTotalSize));
-			if (indexOf > 0 && mTotalSize >= 10 && length > indexOf + 2) {
-				if (!TextUtils.isEmpty(mContent.substring(indexOf + 2))) {
-					mTitleTextView.setText(mContent.substring(indexOf + 2));
-					return;
-				}
-			} else if (indexOf > 0 && mTotalSize > 0 && length > indexOf + 2) {
-				if (!TextUtils.isEmpty(mContent.substring(indexOf + 1))) {
-					mTitleTextView.setText(mContent.substring(indexOf + 1));
-					return;
-				}
+		if (mGalleryAdapter != null) {
+			PicAddress item = mGalleryAdapter.getItem(position);
+			if (!TextUtils.isEmpty(item.getTitle())) {
+				mTitleTextView.setText(item.getTitle());
 			}
-			mTitleTextView.setText(mContent);
+			if (!TextUtils.isEmpty(item.getSubTitle())) {
+				mSubTitle.setText(item.getSubTitle());
+			}
 		}
 	}
 
@@ -339,28 +305,34 @@ public class ViewPagerZoomFragment extends BaseEmptyFragment implements
 			}
 			try {
 				byte[] requestData = SimpleHttp.RequestGet(url);
-				String data = new String(requestData, "GBK");
+				String data = new String(requestData, "UTF-8");
 				Document parse = Jsoup.parse(data, url);
 				Element body = parse.body();
 				List<PicAddress> listData = new ArrayList<PicAddress>();
-				/**
-				 * 图片
-				 */
-				Elements elements = body.getElementsByClass("swiper-slide");
-				mTotalSize = elements.size() - 1;
-				Elements elements1 = body.getElementsByClass("infoline");
-				mContent = elements1.get(0).text();
-				for (int i = 0; i < elements.size() - 1; i++) {
-					Element element = elements.get(i);
-					Elements tags = element.getElementsByTag("img");
-					String attr1 = tags.attr("lazysrc");
-					String attr2 = tags.attr("src");
+
+				Elements elementsTitle = body.getElementsByClass("title");
+				mTitle = elementsTitle.get(elementsTitle.size() - 1).text()
+						.trim();
+
+				Elements elements = body.getElementsByClass("content");
+				Elements elementsList = elements.get(0).getElementsByClass(
+						"image");
+
+				for (int i = 0; i < elementsList.size(); i++) {
 					PicAddress item = new PicAddress();
+					Elements tags = elementsList.get(i).getElementsByTag("img");
+					String imageUrl = tags.attr("src");
+					String subTitle = elements.get(0)
+							.getElementsByTag("p").get(i).text().trim();
 					item.setId(i);
-					if (!TextUtils.isEmpty(attr1)) {
-						item.setUrl(attr1);
-					} else {
-						item.setUrl(attr2);
+					if (!TextUtils.isEmpty(imageUrl)) {
+						item.setImageUrl(imageUrl);
+					}
+					if (!TextUtils.isEmpty(mTitle)) {
+						item.setTitle(mTitle);
+					}
+					if (!TextUtils.isEmpty(subTitle)) {
+						item.setSubTitle(subTitle);
 					}
 					listData.add(item);
 				}

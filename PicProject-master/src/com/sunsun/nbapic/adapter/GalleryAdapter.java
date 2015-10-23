@@ -71,7 +71,7 @@ public class GalleryAdapter extends BaseImageAdapter<PicAddress> {
 		if (mViewTapListener != null) {
 			holder.mView.setOnViewTapListener(mViewTapListener);
 		}
-		displayImage(getItem(position).getUrl(), holder.mView, null,
+		displayImage(getItem(position).getImageUrl(), holder.mView, null,
 				mImageLoadingListener);
 		return convertView;
 	}
